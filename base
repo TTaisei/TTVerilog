@@ -1,0 +1,83 @@
+#いろんな進数から2進数へ
+def d_to_b(binary):
+  """10進数から2進数に変換"""
+  binary=int(binary)
+  s=0
+  ss=0
+  sss=[]
+
+  for i in range(binary):
+    if i==0:
+      s=binary%2
+      ss=binary//2
+      sss.insert(0,s)
+    else:
+      s=ss%2
+      ss=ss//2
+      sss.insert(0,s)
+    if ss==0:
+      break
+  return sss
+
+def o_to_b(octar):
+  """8進数から2進数に変換"""
+  octar=str(octar)
+  s=0
+  sss=[]
+  for i in range(len(octar)):
+    s=d_to_b(octar[i])
+    sss.append(s)
+  return sss
+
+def h_to_b(hexa:str):
+  """16進数から2進数に変換"""
+  hexa=str(hexa)
+  s=0
+  sss=[]
+  for i in range(len(hexa)):
+    s=h_to_d(hexa[i])
+    s=d_to_b(s)
+    sss.append(s)
+  return sss
+
+
+#いろんな進数から10進数へ
+def b_to_d(binary):
+  """2進数から10進数に変換"""
+  t=str(binary)
+  l=len(t)
+  s=0
+  for i in range(l):
+    s+=int(t[-(i+1)])*(2**i)
+  return s
+
+def o_to_d(octar):
+  """8進数から10進数に変換"""
+  t=str(octar)
+  l=len(t)
+  s=0
+  for i in range(l):
+    s+=int(t[-(i+1)])*(8**i)
+  return s
+
+def h_to_d(hexa:str):
+  """16進数から10進数に変換"""
+  t=str(hexa)
+  l=len(t)
+  s=0
+  for i in range(l):
+    if t[-(i+1)]=='A':
+      s+=int(10*(16**i))
+    elif t[-(i+1)]=='B':
+      s+=int(11*(16**i))
+    elif t[-(i+1)]=='C':
+      s+=int(12*(16**i))
+    elif t[-(i+1)]=='D':
+      s+=int(13*(16**i))
+    elif t[-(i+1)]=='E':
+      s+=int(14*(16**i))
+    elif t[-(i+1)]=='F':
+      s+=int(15*(16**i))
+    else:
+      s+=int(t[-(i+1)])*(16**i)
+  return s
