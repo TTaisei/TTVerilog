@@ -262,20 +262,3 @@ def assign(output,*args):
   for i in range(length):
     output[i]=args[i]
   return output
-
-button=input(1,0,1)
-led=output(4,0,0,0,0,0)
-
-on= parameter(1,'b','1')
-off=parameter(1,'b','0')
-state=reg(1,'b','0')
-
-if button[0]==1:
-  state=on
-elif button[0]==0:
-  state==off
-
-assign(led,state,state,state,state)
-
-h_to_b('205')
-
