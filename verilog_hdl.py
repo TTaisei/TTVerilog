@@ -253,12 +253,8 @@ def assign(output,*args):
   args:  出力値
   """
   length=len(output)
-  for i in range(length*10):
-    if output[-(i+1)]==output[0]:
-      if not args[-(i+1)]==args[0]:
-        raise ValueError('check your output or args')
-      else:
-        break
+  if not len(args)==length:
+    raise ValueError('check your output or args')
   for i in range(length):
     output[i]=args[i]
   return output
